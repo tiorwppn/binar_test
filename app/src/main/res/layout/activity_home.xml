@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
         <variable name="viewmodel"
             type="com.binartest.praktek.ui.home.HomeViewModel"/>
@@ -16,30 +17,52 @@
         android:layout_height="match_parent"
         tools:context=".ui.home.HomeActivity">
 
-        <androidx.appcompat.widget.Toolbar
+        <LinearLayout
+            android:padding="10dp"
+            android:orientation="vertical"
+            android:background="@color/colorPrimary"
             android:id="@+id/toolBar"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:text="@{viewmodel.user.email}"
-                tools:text="probelalkhan@gmail.com"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:layout_centerInParent="true"
-                android:id="@+id/textViewEmail"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                android:text="Selamat Datang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <Button
-                android:onClick="@{(v) -> viewmodel.logout(v)}"
-                android:text="Logout"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/textViewEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        </androidx.appcompat.widget.Toolbar>
+                <TextView
+                    android:layout_marginTop="6dp"
+                    android:id="@+id/textViewEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewmodel.user.email}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="@color/colorWhite"
+                    tools:text="Setiyo@gmail.com" />
+
+                <Button
+                    android:textColor="@color/colorWhite"
+                    android:background="@color/colorAccent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:onClick="@{(v) -> viewmodel.logout(v)}"
+                    android:text="Logout" />
+
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list_goods"
@@ -56,6 +79,7 @@
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:onClick="@{(v) -> viewmodel.InputBarang(v)}"
             android:id="@+id/fab_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -5,6 +5,8 @@ import com.binartest.praktek.data.firebase.FirebaseSource
 import com.binartest.praktek.data.repositories.UserRepository
 import com.binartest.praktek.ui.auth.AuthViewModelFactory
 import com.binartest.praktek.ui.home.HomeViewModelFactory
+import com.binartest.praktek.ui.inputItem.InputItemActivity
+import com.binartest.praktek.ui.inputItem.InputItemViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -22,6 +24,7 @@ class FirebaseApplication : Application(), KodeinAware{
         bind() from singleton { UserRepository(instance()) }
         bind() from provider { AuthViewModelFactory(instance()) }
         bind() from provider { HomeViewModelFactory(instance()) }
+        bind() from provider { InputItemViewModelFactory(instance()) }
 
     }
 }
